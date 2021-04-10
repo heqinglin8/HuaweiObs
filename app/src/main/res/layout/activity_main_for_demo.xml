@@ -5,30 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/AccessKey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:hint="AccessKey"
-        android:textColor="@color/black"
-        />
 
-    <EditText
-        android:id="@+id/SecretKey"
+    <LinearLayout
+        android:id="@+id/AccessKeyLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:layout_below="@+id/AccessKey"
-        android:hint="SecretKey"
-        />
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:text="AccessKey"
+            />
+        <EditText
+            android:id="@+id/AccessKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:hint="Provide your Access Key"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:text="7OWUGC5KQ4U7OUM5AG9F"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/SecretKeyLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/AccessKeyLayout"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:text="AccessKey"
+            />
+        <EditText
+            android:id="@+id/SecretKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:hint="Provide your Secret Key"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:text="E1kgTUW6JWRSQGhQopoS1QUGW2pHS7AVVGc2HvaU"
+            />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv"
-        android:layout_below="@+id/SecretKey"
+        android:layout_below="@+id/SecretKeyLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
+        android:text="Click to start test"
         />
 
 </RelativeLayout>

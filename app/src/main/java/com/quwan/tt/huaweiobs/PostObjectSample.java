@@ -43,6 +43,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -52,16 +53,17 @@ import android.widget.TextView;
 public class PostObjectSample extends Activity
 {
     
-    private static final String endPoint = "your-endpoint";
+    private static final String endPoint = "obs.cn-north-4.myhuaweicloud.com";
+
+    private String ak = "7OWUGC5KQ4U7OUM5AG9F";
+
+    private String sk = "E1kgTUW6JWRSQGhQopoS1QUGW2pHS7AVVGc2HvaU";
     
-    private static final String ak = "*** Provide your Access Key ***";
-    
-    private static final String sk = "*** Provide your Secret Key ***";
-    
-    private static String bucketName = "my-obs-bucket-demo";
-    
+    private static String bucketName = "https://quwan-mpc";
+
     private static String objectKey = "my-obs-object-key-demo";
-    
+    private static String securityToken = "ggljbi1lYXN0LTNJJ3siYWNjZXNzIjoiN09XVUdDNUtRNFU3T1VNNUFHOUYiLCJtZXRob2RzIjpbInRva2VuIl0sInBvbGljeSI6eyJWZXJzaW9uIjoiMS4xIiwiU3RhdGVtZW50IjpbeyJDb25kaXRpb24iOnsiU3RyaW5nRXF1YWxzIjp7Im9iczpwcmVmaXgiOlsicHVibGljIl19fSwiQWN0aW9uIjpbIm9iczpvYmplY3Q6KiJdLCJSZXNvdXJjZSI6WyJvYnM6KjoqOm9iamVjdDoqIl0sIkVmZmVjdCI6IkFsbG93In1dfSwicm9sZSI6W10sInJvbGV0YWdlcyI6W10sInRpbWVvdXRfYXQiOjE2MTgxNTA1ODkxNDgsInVzZXIiOnsiZG9tYWluIjp7ImlkIjoiNjJhMTdiNGMwODQwNGYyNjk3NmEzZWYwOTNlZmFiNmEiLCJuYW1lIjoiaHdjbG91ZHNfZWJnIn0sImlkIjoiMDhmNTNmZDI0ODAwMGYzZTFmODBjMDFjNjJkYWM5YjMiLCJuYW1lIjoic3d4NTMyOTQwNSIsInBhc3N3b3JkX2V4cGlyZXNfYXQiOiIifX0YaLTgzbu6s7CMrujAano98mOR5RFxFbIRMkMI2Bjv0OFLFWiW4Byg_QoepSWjgzSgqex0FxJkXYP_9tFgpXphCJp-FLHP5RZtj1x5zlIUQNIWLm3-yscUmAtWjiKROhwZaPQVgVzE9eP8-YtW8qOkPNyCszBT7zGPknlt0IC-Kk10MFSjB906Jlf99lnyEKPfZy_Oz086sFRwU0Ddh13_dJZsAgbkXfxQCEzCd_E52ZuoRwtEeO4G0Luv8NKcVkW4FUYwqj4-V7vwHFJ1gLbFwTurwKKs1Fo9wI9QkJ03b1JH4mE3FObznX3yP0M6ifYpuv0SDnAW0YDSPopXRA78";
+
     private static ObsClient obsClient;
     
     private static StringBuffer sb;
@@ -79,14 +81,13 @@ public class PostObjectSample extends Activity
         ObsConfiguration config = new ObsConfiguration();
         config.setEndPoint(endPoint);
         config.setAuthType(authType);
-        
+
         /*
         * Constructs a obs client instance with your account for accessing OBS
         */
-        obsClient = new ObsClient(ak, sk, config);
         final TextView tv = (TextView)findViewById(R.id.tv);
-        final TextView AccessKey = (TextView)findViewById(R.id.AccessKey);
-        final TextView SecretKey = (TextView)findViewById(R.id.SecretKey);
+        final EditText AccessKey = (EditText)findViewById(R.id.AccessKey);
+        final EditText SecretKey = (EditText)findViewById(R.id.SecretKey);
 
         tv.setText("Click to start test");
         
@@ -95,6 +96,9 @@ public class PostObjectSample extends Activity
             @Override
             public void onClick(View v)
             {
+                ak = AccessKey.getText().toString().trim();
+                sk = SecretKey.getText().toString().trim();
+                obsClient = new ObsClient(ak, sk, securityToken, endPoint);
                 tv.setClickable(false);
                 AsyncTask<Void, Void, String> task = new PostObjectTask();
                 task.execute();
@@ -115,7 +119,7 @@ public class PostObjectSample extends Activity
                  * Create bucket
                  */
                 sb.append("Create a new bucket for demo\n\n");
-                obsClient.createBucket(bucketName);
+//                obsClient.createBucket(bucketName);
                 
                 /*
                  * Create sample file
