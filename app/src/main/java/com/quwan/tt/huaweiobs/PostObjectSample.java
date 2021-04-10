@@ -49,6 +49,14 @@ import android.widget.TextView;
 /**
  * This sample demonstrates how to post object under specified bucket from
  * OBS using the OBS SDK for Android.
+ * {
+ *  "credential": {
+ *   "access key": "7OWUGC5KQ4U7OUM5AG9F",
+ *   "expires_at": "2021-04-11T14:16:29.148000Z",
+ *   "secretkey": "E1kgTUW6JWRSQGhQopoS1QUGW2pHS7AVVGc2HvaU",
+ *   "securitytoken": "ggljbi1lYXN0LTNJJ3siYWNjZXNzIjoiN09XVUdDNUtRNFU3T1VNNUFHOUYiLCJtZXRob2RzIjpbInRva2VuIl0sInBvbGljeSI6eyJWZXJzaW9uIjoiMS4xIiwiU3RhdGVtZW50IjpbeyJDb25kaXRpb24iOnsiU3RyaW5nRXF1YWxzIjp7Im9iczpwcmVmaXgiOlsicHVibGljIl19fSwiQWN0aW9uIjpbIm9iczpvYmplY3Q6KiJdLCJSZXNvdXJjZSI6WyJvYnM6KjoqOm9iamVjdDoqIl0sIkVmZmVjdCI6IkFsbG93In1dfSwicm9sZSI6W10sInJvbGV0YWdlcyI6W10sInRpbWVvdXRfYXQiOjE2MTgxNTA1ODkxNDgsInVzZXIiOnsiZG9tYWluIjp7ImlkIjoiNjJhMTdiNGMwODQwNGYyNjk3NmEzZWYwOTNlZmFiNmEiLCJuYW1lIjoiaHdjbG91ZHNfZWJnIn0sImlkIjoiMDhmNTNmZDI0ODAwMGYzZTFmODBjMDFjNjJkYWM5YjMiLCJuYW1lIjoic3d4NTMyOTQwNSIsInBhc3N3b3JkX2V4cGlyZXNfYXQiOiIifX0YaLTgzbu6s7CMrujAano98mOR5RFxFbIRMkMI2Bjv0OFLFWiW4Byg_QoepSWjgzSgqex0FxJkXYP_9tFgpXphCJp-FLHP5RZtj1x5zlIUQNIWLm3-yscUmAtWjiKROhwZaPQVgVzE9eP8-YtW8qOkPNyCszBT7zGPknlt0IC-Kk10MFSjB906Jlf99lnyEKPfZy_Oz086sFRwU0Ddh13_dJZsAgbkXfxQCEzCd_E52ZuoRwtEeO4G0Luv8NKcVkW4FUYwqj4-V7vwHFJ1gLbFwTurwKKs1Fo9wI9QkJ03b1JH4mE3FObznX3yP0M6ifYpuv0SDnAW0YDSPopXRA78"
+ *  }
+ * }
  */
 public class PostObjectSample extends Activity
 {
