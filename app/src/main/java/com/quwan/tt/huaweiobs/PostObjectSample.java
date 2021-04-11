@@ -42,6 +42,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -126,7 +127,7 @@ public class PostObjectSample extends Activity
                 /*
                  * Create bucket
                  */
-                sb.append("Create a new bucket for demo\n\n");
+//                sb.append("Create a new bucket for demo\n\n");
 //                obsClient.createBucket(bucketName);
                 
                 /*
@@ -154,7 +155,8 @@ public class PostObjectSample extends Activity
                 
                 PostSignatureResponse response = obsClient.createPostSignature(request);
                 
-                formParams.put("key", objectKey);
+//                formParams.put("key", objectKey);
+                formParams.put("key", sampleFile.getName());
                 formParams.put("policy", response.getPolicy());
                 
                 if(authType == AuthTypeEnum.OBS) {
@@ -292,7 +294,9 @@ public class PostObjectSample extends Activity
                 strBuf.append("Content-Type: " + contentType + "\r\n\r\n");
                 
                 out.write(strBuf.toString().getBytes());
-                
+
+//                File newFile = new File(sampleFile.getPath().replace("/data/user/0","/data/data"));
+//                Log.i("hql","newFilePath = "+newFile.getPath());
                 in = new DataInputStream(new FileInputStream(sampleFile));
                 int bytes = 0;
                 byte[] bufferOut = new byte[1024];
@@ -367,13 +371,14 @@ public class PostObjectSample extends Activity
         private File createSampleFile()
             throws IOException
         {
+//            File file = new File(getCacheDir()+"/obs-android-sdk-"+System.currentTimeMillis()+".txt");
             File file = File.createTempFile("obs-android-sdk-", ".txt");
             file.deleteOnExit();
             Writer writer = new OutputStreamWriter(new FileOutputStream(file));
             writer.write("abcdefghijklmnopqrstuvwxyz\n");
             writer.write("0123456789011234567890\n");
             writer.close();
-            
+            Log.i("hql","name = "+file.getName()+" filePath = "+file.getPath());
             return file;
         }
         
