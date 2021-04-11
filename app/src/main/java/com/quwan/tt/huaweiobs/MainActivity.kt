@@ -10,8 +10,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val postObjectSample = findViewById<TextView>(R.id.PostObjectSample)
+        val postFileActivity = findViewById<TextView>(R.id.PostFileActivity)
         postObjectSample.setOnClickListener {
             val intent = Intent(this,PostObjectSample::class.java)
+            startActivity(intent)
+        }
+
+        postFileActivity.setOnClickListener {
+            val intent = Intent(this,PostFileActivity::class.java)
             startActivity(intent)
         }
     }
